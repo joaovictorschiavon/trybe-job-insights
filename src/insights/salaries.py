@@ -48,6 +48,20 @@ def get_min_salary(path: str) -> int:
     int
         The minimum salary paid out of all job opportunities
     """
+
+    dict = read(path)
+    unique_min_salary = set(
+        salary["min_salary"]
+        for salary in dict
+        if salary["min_salary"] and salary["min_salary"].isdigit()
+    )
+    list_min_salary = list(unique_min_salary)
+    min_salary = list_min_salary[0]
+    for x in unique_min_salary:
+        if int(x) < int(min_salary):
+            min_salary = int(x)
+    return min_salary
+
     raise NotImplementedError
 
 
