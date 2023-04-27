@@ -17,13 +17,14 @@ def read(path: str) -> List[Dict]:
     list
         List of rows as dicts
     """
-    # raise NotImplementedError
     jobs_dict = []
     with open(path, "r") as file:
         jobs_reader = csv.DictReader(file, delimiter=",")
         for row in jobs_reader:
             jobs_dict.append(row)
     return jobs_dict
+
+    raise NotImplementedError
 
 
 def get_unique_job_types(path: str) -> List[str]:
@@ -41,6 +42,11 @@ def get_unique_job_types(path: str) -> List[str]:
     list
         List of unique job types
     """
+
+    dict = read(path)
+    unique_job_types = set(job["job_type"] for job in dict if job["job_type"])
+    return list(unique_job_types)
+
     raise NotImplementedError
 
 
