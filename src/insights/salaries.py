@@ -56,7 +56,14 @@ def get_min_salary(path: str) -> int:
         if salary["min_salary"] and salary["min_salary"].isdigit()
     )
     list_min_salary = list(unique_min_salary)
-    min_salary = list_min_salary[0]
+
+    min_salary = None
+
+    for x in list_min_salary:
+        if x and x.isdigit():
+            min_salary = int(x)
+            break
+
     for x in unique_min_salary:
         if int(x) < int(min_salary):
             min_salary = int(x)
@@ -88,6 +95,7 @@ def matches_salary_range(job: Dict, salary: Union[int, str]) -> bool:
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
+
     raise NotImplementedError
 
 
